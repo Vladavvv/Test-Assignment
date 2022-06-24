@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using Test_Assignment.Models;
+using Test_Assignment.ViewModels;
 
 namespace Test_Assignment
 {
@@ -25,10 +26,11 @@ namespace Test_Assignment
     {
         public MainWindow()
         {
-            HttpClient httpClient = new HttpClient();
+            /*HttpClient httpClient = new HttpClient();
             var get = httpClient.GetStringAsync("https://api.coincap.io/v2/assets");
-            var repositories = JsonConvert.DeserializeObject<Data>(get.Result);
+            var repositories = JsonConvert.DeserializeObject<Data>(get.Result);*/
             InitializeComponent();
+            DataContext = new CurrencyViewModel();
         }
     }
 }
