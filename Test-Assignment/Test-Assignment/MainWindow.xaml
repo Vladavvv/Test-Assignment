@@ -13,35 +13,40 @@
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="14" />
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Height" Value="30"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="0.8*" />
         </Grid.ColumnDefinitions>
-
+        
         <ListBox Grid.Column="0" ItemsSource="{Binding asserts}"
                  SelectedItem="{Binding SelectedAssert}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path = Name}" />
+                        <TextBlock x:Name="nameTextBox" FontSize="18" Text="{Binding Path = Name}" />
                         <TextBlock Text="{Binding Path = PriceUsd}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
         <StackPanel Grid.Column="1" DataContext="{Binding SelectedAssert}">
             <TextBlock Text="Coin"  />
             <TextBlock Text="Name" />
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox x:Name="nameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Price" />
             <TextBox Text="{Binding PriceUsd, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Volume" />
             <TextBox Text="{Binding VolumeUsd24Hr, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Price change" />
             <TextBox Text="{Binding ChangePercent24Hr, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Click="Button_Click">More</Button>
         </StackPanel>
     </Grid>
 </Window>
