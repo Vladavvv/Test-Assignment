@@ -7,6 +7,6 @@ namespace Test_Assignment.Models
 {
     internal class DataMarkets
     {
-        public ObservableCollection<Market> data = new ObservableCollection<Market>();
+        public List<Market> data = new List<Market>();
     }
 }

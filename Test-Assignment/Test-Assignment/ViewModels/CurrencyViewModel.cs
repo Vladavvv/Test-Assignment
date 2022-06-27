@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Test_Assignment.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Assert selectedAssert;
-        public ObservableCollection<Assert> asserts { get; set; }
+        public List<Assert> asserts { get; set; }
         public Assert SelectedAssert
         {
             get { return selectedAssert; }
@@ -35,6 +36,13 @@ namespace Test_Assignment.ViewModels
             var get = httpClient.GetStringAsync("https://api.coincap.io/v2/assets");
             var repositories = JsonConvert.DeserializeObject<Data>(get.Result);
             asserts = repositories.data;
+        }
+        public CurrencyViewModel(string name)
+        {
+            HttpClient httpClient = new HttpClient();
+            var get = httpClient.GetStringAsync("https://api.coincap.io/v2/assets");
+            var repositories = JsonConvert.DeserializeObject<Data>(get.Result);
+            asserts = repositories.data.Where(x => string.Equals(x.Name, name, StringComparison.CurrentCultureIgnoreCase)).ToList();
         }
     }
 }

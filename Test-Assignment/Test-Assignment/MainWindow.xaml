@@ -24,9 +24,13 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="0.8*" />
         </Grid.ColumnDefinitions>
-        
+        <StackPanel>
+            <TextBlock Text="Search" />
+            <TextBox x:Name="searchTextBox" />
+            <Button Click="Button_Click_1">Search</Button>
+        </StackPanel>
         <ListBox Grid.Column="0" ItemsSource="{Binding asserts}"
-                 SelectedItem="{Binding SelectedAssert}">
+                 SelectedItem="{Binding SelectedAssert}" Margin="0,88,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">

@@ -7,6 +7,6 @@ namespace Test_Assignment.Models
 {
     internal class Data
     {
-        public ObservableCollection<Assert> data = new ObservableCollection<Assert>();
+        public List<Assert> data = new List<Assert>();
     }
 }

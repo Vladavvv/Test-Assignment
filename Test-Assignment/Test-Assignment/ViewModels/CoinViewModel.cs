@@ -12,7 +12,7 @@ namespace Test_Assignment.ViewModels
     internal class CoinViewModel
     {
         public Assert coin { get; set; }
-        public ObservableCollection<Market> markets { get; set; }
+        public List<Market> markets { get; set; }
         public CoinViewModel(string name)
         {
             HttpClient httpClient = new HttpClient();
