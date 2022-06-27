@@ -21,7 +21,7 @@ namespace Test_Assignment.ViewModels
             coin = repositories.data.First(x => x.Name == name);
             get = httpClient.GetStringAsync($"https://api.coincap.io/v2/assets/{coin.Id}/markets");
             var repos = JsonConvert.DeserializeObject<DataMarkets>(get.Result);
-            markets = repos.data;
+            markets = repos.data.Distinct().ToList();
         }
     }
 }

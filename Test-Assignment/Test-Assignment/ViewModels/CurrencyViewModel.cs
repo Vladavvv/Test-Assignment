@@ -35,7 +35,7 @@ namespace Test_Assignment.ViewModels
             HttpClient httpClient = new HttpClient();
             var get = httpClient.GetStringAsync("https://api.coincap.io/v2/assets");
             var repositories = JsonConvert.DeserializeObject<Data>(get.Result);
-            asserts = repositories.data;
+            asserts = repositories.data.Take(10).ToList();
         }
         public CurrencyViewModel(string name)
         {
