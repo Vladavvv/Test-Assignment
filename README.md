@@ -5,3 +5,4 @@ The application supports the following functionality:
   price, volume, price change, in which markets it can be purchased and at what price.
 - Possibility of searching for currency by name.
 - Usage of MVVM.
+:)
